@@ -3,8 +3,9 @@
 </template>
 
 <script>
-import OrgChart from 'orgchart.js'
+import OrgChart from '../lib/orgchart'
 export default {
+  name: 'orgchart',
   props: {
     options: {
       type: Object
@@ -12,15 +13,7 @@ export default {
   },
   data () {
     return {
-      orgchart: null,
-      datasource: {
-        name: 'JavaScript',
-        children: [
-          { 'name': 'Angular' },
-          { 'name': 'React' },
-          { 'name': 'Vue' }
-        ]
-      }
+      orgchart: null
     }
   },
   mounted() {
@@ -28,10 +21,7 @@ export default {
   },
   methods: {
     initOrgChart() {
-      this.orgchart = new OrgChart({
-        chartContainer: '#chart-container',
-        data: this.datasource,
-      })
+      this.orgchart = new OrgChart(this.options)
     }
   }
 }
