@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import orgchart from '../../dist/vue-orgchart.min.js'
+import orgchart from '../dist/vue-orgchart.min.js'
 
 export default {
   components: { orgchart },

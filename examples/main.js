@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import App from './components/App.vue'
-import VueOrgChart from './index'
+import App from './App.vue'
+import VueOrgChart from '../src/index'
 
 Vue.use(VueOrgChart)
 
