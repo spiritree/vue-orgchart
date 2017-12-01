@@ -1,7 +1,12 @@
-import orgchart from '../src/components/vue-orgchart.vue'
+import VoBasic from '../src/components/VoBasic.vue'
+import VoEdit from '../src/components/VoEdit.vue'
 
-export default orgchart
+export {
+  VoBasic,
+  VoEdit
+}
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.component('v-orgchart', orgchart)
+  window.Vue.component('VoBasic', VoBasic)
+  window.Vue.component('VoEdit', VoEdit)
 }

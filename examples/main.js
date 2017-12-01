@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueOrgChart from '../src/index'
-
-Vue.use(VueOrgChart)
+import '../dist/style.min.css'
 
 new Vue({
   el: '#app',
   render: h => h(App)
 })
-

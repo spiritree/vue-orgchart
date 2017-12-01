@@ -1,20 +1,28 @@
 <template>
-<orgchart :options="{chartContainer: '#chart-container',
-  data: this.datasource}"></orgchart>
+<div>
+  <vo-edit :options="{chartContainer: '#chart-container',
+  data: this.datasource}"></vo-edit>
+</div>
 </template>
 
 <script>
-import orgchart from '../dist/vue-orgchart.min.js'
+import { VoBasic, VoEdit } from '../dist/vue-orgchart.min.js'
 
 export default {
-  components: { orgchart },
+  components: { VoBasic, VoEdit },
   created () {
     this.datasource = {
       name: 'JavaScript',
         children: [
-          { 'name': 'Angular' },
-          { 'name': 'React' },
-          { 'name': 'Vue' }
+          { name: 'Angular' },
+          {
+            name: 'React',
+            children: [{ name: 'Preact' }]
+          },
+          {
+            name: 'Vue',
+            children: [{ name: 'Moon' }]
+          }
         ]
     }
   }

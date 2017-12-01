@@ -1,5 +1,7 @@
 webpack.config.js
 /src/lib/orgchart.js
 /src/main.js
+/src/index.js
 /dist
 /examples
+/build
