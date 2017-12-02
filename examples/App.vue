@@ -1,7 +1,6 @@
 <template>
 <div>
-  <vo-edit :options="{chartContainer: '#chart-container',
-  data: this.datasource}"></vo-edit>
+  <vo-edit :options="{ data: this.datasource }"></vo-edit>
 </div>
 </template>
 

@@ -13,7 +13,10 @@ export default {
   },
   data () {
     return {
-      orgchart: null
+      orgchart: null,
+      defaultOptions: {
+        'chartContainer': '#chart-container'
+      }
     }
   },
   mounted() {
@@ -21,11 +24,13 @@ export default {
   },
   methods: {
     initOrgChart() {
-      this.orgchart = new OrgChart(this.options)
+      const options = Object.assign(this.defaultOptions, this.options)
+      this.orgchart = new OrgChart(options)
     }
   }
 }
 </script>
+
 <style>
 #wrapper {
   width: 50%;
