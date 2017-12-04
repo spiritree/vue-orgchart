@@ -1603,7 +1603,7 @@ export default class OrgChart {
     if (chart.children[3]) {
       Array.from(chart.children[3].children).forEach((el) => {
         if (!_subObj.children) { _subObj.children = []; }
-        _subObj.children.push(this._loopChartElement(el.firstChild));
+        _subObj.children.push(this._loopChartDataset(el.firstChild));
       });
     }
     return _subObj;

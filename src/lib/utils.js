@@ -51,29 +51,6 @@ export const clickChart = (event) => {
   }
 }
 
-export const toggleViewState = () => {
-  let chart = document.querySelector('.orgchart')
-  chart.classList.toggle('view-state', this.value !== 'view')
-  document.getElementById('edit-panel').classList.toggle('view-state', this.value === 'view')
-  if (this.value === 'edit') {
-    removeClass(Array.from(chart.querySelectorAll('tr')), 'hidden')
-    removeClass(Array.from(chart.querySelectorAll('td')), 'hidden')
-    removeClass(Array.from(chart.querySelectorAll('.node')), 'slide-up slide-down slide-right slide-left')
-  } else {
-    document.getElementById('btn-reset').click()
-  }
-}
-
-export const toggleNodeType = () => {
-  if (this.value === 'parent') {
-    document.getElementById('edit-panel').classList.add('edit-parent-node')
-    Array.from(document.getElementById('new-nodelist').children)
-      .slice(1).forEach(newNode => newNode.remove())
-  } else {
-    document.getElementById('edit-panel').classList.remove('edit-parent-node')
-  }
-}
-
 export const addInputs = () => {
   let newNode = document.createElement('li')
   newNode.innerHTML = `<input type="text" class="new-node">`
@@ -192,4 +169,15 @@ export const resetPanel = () => {
 
 export const getId = () => {
   return (new Date().getTime()) * 1000 + Math.floor(Math.random() * 1001)
+}
+
+export const exportJSON = (orgchart) => {
+  let datasourceJSON = {}
+  let ChartJSON = orgchart.getChartJSON()
+  datasourceJSON = JSON.stringify(ChartJSON, null, 2)
+  if(document.getElementsByTagName('code')[0]) {
+    let code = document.getElementsByTagName('code')[0]
+    code.innerHTML = datasourceJSON
+  }
+  return datasourceJSON
 }
