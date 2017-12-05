@@ -8,9 +8,11 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./build/webpack.config.js",
     "build": "webpack --progress --hide-modules --config ./build/webpack.config.build.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.config.build.min.js",
-    "rollup": "node build/rollup.config.js"
+    "rollup": "node build/rollup.config.js",
+    "test": "karma start ./test/karma.conf.js"
   },
   "dependencies": {
+    "orgchart.js": "0.0.4"
   },
   "browserslist": [
     "> 1%",
@@ -31,6 +33,7 @@
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",
+    "es6-promise": "^4.1.1",
     "eslint": "^4.12.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
@@ -44,6 +47,14 @@
     "file-loader": "^1.1.4",
     "html-webpack-plugin": "^2.30.1",
     "json-loader": "^0.5.7",
+    "karma": "^1.7.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-commonjs": "^1.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-spec-reporter": "^0.0.31",
+    "karma-webpack": "^2.0.3",
     "opn": "^5.1.0",
     "rollup": "^0.52.0",
     "rollup-plugin-alias": "^1.4.0",
