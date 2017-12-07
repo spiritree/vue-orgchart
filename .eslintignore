@@ -5,3 +5,4 @@ webpack.config.js
 /dist
 /examples
 /build
+/docs
