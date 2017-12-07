@@ -3,12 +3,17 @@
 </div>
 
 <p align="center">
-A vue wrapper for OrgChart.js.
+A Vue wrapper for OrgChart.js.
 </p>
 
 <p align="center">
 <a href="https://travis-ci.org/spiritree/vue-orgchart"><img alt="Travis Status" src="https://img.shields.io/travis/spiritree/vue-orgchart/master.svg?style=flat-square"></a>
 </p>
+
+## Intro
+
+- First of all, thanks a lot for dabeng's great work -- [OrgChart.js](https://github.com/dabeng/OrgChart.js)
+- If you prefer the Vue.js Wrapper for Orgchart.js,you could try [my project](https://github.com/spiritree/vue-orgchart)
 
 ## Links
 
@@ -27,6 +32,13 @@ A vue wrapper for OrgChart.js.
 npm install vue-orgchart -S
 ```
 ## Quick Start
+
+> In `main.js`
+
+`import 'vue-orgchart/dist/style.min.css'`
+
+> In `*.vue`
+
 ```javascript
 <template>
   <div>
@@ -65,10 +77,13 @@ npm install
 # serve with hot reload at localhost:8999
 npm run dev
 
+# unit test
+npm run test
+
 # build for production with minification
 npm run rollup
 ```
 
-### License
+## License
 
 MIT
