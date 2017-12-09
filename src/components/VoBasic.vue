@@ -10,7 +10,7 @@ export default {
   props: {
     data: { type: Object, default () { return {} } },
     pan: { type: Boolean, default: false },
-    pan: { type: Boolean, default: false },
+    zoom: { type: Boolean, default: false },
     direction: { type: String, default: 't2b' },
     verticalDepth: { type: Number },
     toggleSiblingsResp: { type: Boolean, default: false },
