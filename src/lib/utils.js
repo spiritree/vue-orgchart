@@ -175,8 +175,8 @@ export const exportJSON = (orgchart) => {
   let datasourceJSON = {}
   let ChartJSON = orgchart.getChartJSON()
   datasourceJSON = JSON.stringify(ChartJSON, null, 2)
-  if(document.getElementsByTagName('code')[0]) {
-    let code = document.getElementsByTagName('code')[0]
+  if(document.getElementsByTagName('code')[1]) {
+    let code = document.getElementsByTagName('code')[1]
     code.innerHTML = datasourceJSON
   }
   return datasourceJSON

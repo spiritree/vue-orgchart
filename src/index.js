@@ -7,6 +7,6 @@ export {
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.component('VoBasic', VoBasic)
-  window.Vue.component('VoEdit', VoEdit)
+  window.Vue.component('vo-basic', VoBasic)
+  window.Vue.component('vo-edit', VoEdit)
 }
