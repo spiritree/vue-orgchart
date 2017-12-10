@@ -6,7 +6,7 @@ const uglify = require('rollup-plugin-uglify')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
-const inputOptions = {
+let inputOptions = {
   input: 'src/index.js',
   plugins: [
     vue({ css: 'dist/style.min.css', postcss: [autoprefixer, cssnano] }),
@@ -21,16 +21,26 @@ const inputOptions = {
   ]
 }
 
-const outputOptions = {
-  format: 'umd',
-  name: 'vue-orgchart',
-  file: 'dist/vue-orgchart.min.js'
-}
+let outputOptions = [
+  {
+    format: 'umd',
+    name: 'vue-orgchart',
+    file: 'dist/vue-orgchart.min.js'
+  },
+  {
+    format: 'cjs',
+    name: 'vue-orgchart',
+    file: 'dist/vue-orgchart.common.min.js'
+  }
+]
 
-async function build() {
+async function build(outputOptions) {
   const bundle = await rollup.rollup(inputOptions)
-  const { code, map } = await bundle.generate(outputOptions)
   await bundle.write(outputOptions)
 }
 
-build();
+outputOptions.forEach(outputOptions => {
+  build(outputOptions)
+    .then(() => console.log(`rollup: ${outputOptions.name}.${outputOptions.format} built successfully`))
+    .catch(err => console.error(err))
+})
