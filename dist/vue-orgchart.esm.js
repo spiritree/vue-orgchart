@@ -42,20 +42,7 @@ var createClass = function () {
 
 
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
 
-  return obj;
-};
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -4270,19 +4257,33 @@ var mergeOptions = function mergeOptions(obj, src) {
   return merge(obj, src);
 };
 
-var _props;
-
 var VoBasic = { render: function render() {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { staticClass: "vo-basic", attrs: { "id": "chart-container" } });
   }, staticRenderFns: [],
   name: 'orgchart',
-  props: (_props = {
+  props: {
     data: { type: Object, default: function _default() {
         return {};
       }
     },
-    pan: { type: Boolean, default: false }
-  }, defineProperty(_props, 'pan', { type: Boolean, default: false }), defineProperty(_props, 'direction', { type: String, default: 't2b' }), defineProperty(_props, 'verticalDepth', { type: Number }), defineProperty(_props, 'toggleSiblingsResp', { type: Boolean, default: false }), defineProperty(_props, 'ajaxURL', { type: Object }), defineProperty(_props, 'depth', { type: Number, default: 999 }), defineProperty(_props, 'nodeTitle', { type: String, default: 'name' }), defineProperty(_props, 'parentNodeSymbol', { type: String, default: 'fa-users' }), defineProperty(_props, 'nodeContent', { type: String }), defineProperty(_props, 'nodeId', { type: String, default: 'id' }), defineProperty(_props, 'createNode', { type: Function }), defineProperty(_props, 'exportButton', { type: Boolean, default: false }), defineProperty(_props, 'exportFilename', { type: String }), defineProperty(_props, 'chartClass', { type: String, default: '' }), defineProperty(_props, 'draggable', { type: Boolean, default: false }), defineProperty(_props, 'dropCriteria', { type: Function }), _props),
+    pan: { type: Boolean, default: false },
+    zoom: { type: Boolean, default: false },
+    direction: { type: String, default: 't2b' },
+    verticalDepth: { type: Number },
+    toggleSiblingsResp: { type: Boolean, default: false },
+    ajaxURL: { type: Object },
+    depth: { type: Number, default: 999 },
+    nodeTitle: { type: String, default: 'name' },
+    parentNodeSymbol: { type: String, default: 'fa-users' },
+    nodeContent: { type: String },
+    nodeId: { type: String, default: 'id' },
+    createNode: { type: Function },
+    exportButton: { type: Boolean, default: false },
+    exportFilename: { type: String },
+    chartClass: { type: String, default: '' },
+    draggable: { type: Boolean, default: false },
+    dropCriteria: { type: Function }
+  },
   data: function data() {
     return {
       orgchart: null,
@@ -4465,26 +4466,40 @@ var exportJSON = function exportJSON(orgchart) {
   var datasourceJSON = {};
   var ChartJSON = orgchart.getChartJSON();
   datasourceJSON = JSON.stringify(ChartJSON, null, 2);
-  if (document.getElementsByTagName('code')[0]) {
-    var code = document.getElementsByTagName('code')[0];
+  if (document.getElementsByTagName('code')[1]) {
+    var code = document.getElementsByTagName('code')[1];
     code.innerHTML = datasourceJSON;
   }
   return datasourceJSON;
 };
 
-var _props$1;
-
 var VoEdit = { render: function render() {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { staticClass: "vo-edit", attrs: { "id": "chart-container" } });
   }, staticRenderFns: [],
   name: 'orgchart',
-  props: (_props$1 = {
+  props: {
     data: { type: Object, default: function _default() {
         return {};
       }
     },
-    pan: { type: Boolean, default: false }
-  }, defineProperty(_props$1, 'pan', { type: Boolean, default: false }), defineProperty(_props$1, 'direction', { type: String, default: 't2b' }), defineProperty(_props$1, 'verticalDepth', { type: Number }), defineProperty(_props$1, 'toggleSiblingsResp', { type: Boolean, default: false }), defineProperty(_props$1, 'ajaxURL', { type: Object }), defineProperty(_props$1, 'depth', { type: Number, default: 999 }), defineProperty(_props$1, 'nodeTitle', { type: String, default: 'name' }), defineProperty(_props$1, 'parentNodeSymbol', { type: String, default: 'fa-users' }), defineProperty(_props$1, 'nodeContent', { type: String }), defineProperty(_props$1, 'nodeId', { type: String, default: 'id' }), defineProperty(_props$1, 'createNode', { type: Function }), defineProperty(_props$1, 'exportButton', { type: Boolean, default: false }), defineProperty(_props$1, 'exportFilename', { type: String }), defineProperty(_props$1, 'chartClass', { type: String, default: '' }), defineProperty(_props$1, 'draggable', { type: Boolean, default: false }), defineProperty(_props$1, 'dropCriteria', { type: Function }), _props$1),
+    pan: { type: Boolean, default: false },
+    zoom: { type: Boolean, default: false },
+    direction: { type: String, default: 't2b' },
+    verticalDepth: { type: Number },
+    toggleSiblingsResp: { type: Boolean, default: false },
+    ajaxURL: { type: Object },
+    depth: { type: Number, default: 999 },
+    nodeTitle: { type: String, default: 'name' },
+    parentNodeSymbol: { type: String, default: 'fa-users' },
+    nodeContent: { type: String },
+    nodeId: { type: String, default: 'id' },
+    createNode: { type: Function },
+    exportButton: { type: Boolean, default: false },
+    exportFilename: { type: String },
+    chartClass: { type: String, default: '' },
+    draggable: { type: Boolean, default: false },
+    dropCriteria: { type: Function }
+  },
   data: function data() {
     return {
       orgchart: null,
@@ -4518,8 +4533,8 @@ var VoEdit = { render: function render() {
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.component('VoBasic', VoBasic);
-  window.Vue.component('VoEdit', VoEdit);
+  window.Vue.component('vo-basic', VoBasic);
+  window.Vue.component('vo-edit', VoEdit);
 }
 
 export { VoBasic, VoEdit };
