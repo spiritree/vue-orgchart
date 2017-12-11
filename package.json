@@ -2,9 +2,22 @@
   "name": "vue-orgchart",
   "description": "A vue wrapper for OrgChart.js",
   "version": "1.0.0",
-  "author": "spiritree <spiritreess@gmail.com>",
+  "author": {
+    "name": "spiritree",
+    "email": "spiritreess@gmail.com",
+    "url": "https://github.com/spiritree"
+  },
+  "files": [
+    "dist",
+    "src",
+    "docs"
+  ],
+  "main": "dist/vue-orgchart.min.js",
   "license": "MIT",
-  "private": true,
+  "homepage": "https://spiritree.github.io/vue-orgchart",
+  "bugs": {
+    "url": "https://github.com/spiritree/vue-orgchart/issues"
+  },
   "scripts": {
     "dev": "webpack-dev-server --config ./build/webpack.config.js",
     "build": "webpack --progress --hide-modules --config ./build/webpack.config.build.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.config.build.min.js",
@@ -12,6 +25,14 @@
     "docs": "docsify serve docs --port 3002",
     "test": "karma start ./test/karma.conf.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spiritree/vue-orgchart.git"
+  },
+  "keywords": [
+    "vue",
+    "orgchart"
+  ],
   "dependencies": {
     "orgchart.js": "0.0.4"
   },
