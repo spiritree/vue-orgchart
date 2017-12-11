@@ -5,4 +5,5 @@
   - [Basic Orgchart](basic)
   - [Pan/Zoom Orgchart](panzoom)
   - [Draggable Orgchart](drag)
+  - [Export Picture Orgchart](exportpic)
   - [Editable Orgchart](edit)

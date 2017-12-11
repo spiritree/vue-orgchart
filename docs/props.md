@@ -2,15 +2,15 @@
 
 ### Example
 
-`<vo-basic :data="chartData" :exportButton=true exportFilename="test"></vo-basic>`
+`<vo-basic :data="chartData" :draggable=true></vo-basic>`
 
-`<vo-edit :data="chartData" :exportButton=true exportFilename="test"></vo-edit>`
+`<vo-edit :data="chartData" :draggable=true></vo-edit>`
 
 ### Props
 
 <table>
   <thead>
-    <tr><th>Name</th><th>Type</th><th>Requiffffffffffred</th><th>Default</th><th>Description</th></tr>
+    <tr><th>Name</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr>
   </thead>
   <tbody>
     <tr>

@@ -33,4 +33,7 @@ iframe {
   text-align: center;
 }
 
-
+.markdown-section tr {
+  border: 1px solid #fff;
+  background:#fff;
+}

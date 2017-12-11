@@ -1,11 +1,11 @@
-## Quick Start
+## 快速开始
 
-### Install
+### 安装
 ```shell
 npm install vue-orgchart -S
 ```
 
-### Import in your project
+### 在项目中导入
 
 > `main.js`
 
