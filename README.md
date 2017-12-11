@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div align="center" style="text-align:center">
   <img src="/assets/vue-orgchart.jpg" alt="vue-orgchart logo">
 </div>
 
