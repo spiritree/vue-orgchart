@@ -8,6 +8,8 @@ A Vue wrapper for OrgChart.js.
 
 <p align="center">
 <a href="https://travis-ci.org/spiritree/vue-orgchart"><img alt="Travis Status" src="https://img.shields.io/travis/spiritree/vue-orgchart/master.svg?style=flat-square"></a>
+<a href="https://www.npmjs.com/package/vue-orgchart"><img alt="npm" src="https://img.shields.io/npm/v/vue-orgchart.svg?style=flat-square"></a>
+
 </p>
 
 ## Intro
