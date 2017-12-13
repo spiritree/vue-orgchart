@@ -6,41 +6,67 @@ const uglify = require('rollup-plugin-uglify')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
-let inputOptions = {
-  input: 'src/index.js',
-  plugins: [
-    vue({ css: 'dist/style.min.css', postcss: [autoprefixer, cssnano] }),
-    resolve({
-      extensions: ['.js', '.vue']
-    }),
-    babel({
-      exclude: 'node_modules/**',
-      plugins: ['external-helpers']
-    }),
-    uglify()
-  ]
-}
-
-let outputOptions = [
+const outputOptions = [
   {
+    min: true,
     format: 'umd',
     name: 'vue-orgchart',
     file: 'dist/vue-orgchart.min.js'
   },
   {
+    min: false,
+    format: 'umd',
+    name: 'vue-orgchart',
+    file: 'dist/vue-orgchart.js'
+  },
+  {
+    min: true,
     format: 'cjs',
     name: 'vue-orgchart',
     file: 'dist/vue-orgchart.common.min.js'
+  },
+  {
+    min: false,
+    format: 'cjs',
+    name: 'vue-orgchart',
+    file: 'dist/vue-orgchart.common.js'
+  },
+  {
+    min: false,
+    format: 'es',
+    name: 'vue-orgchart',
+    file: 'dist/vue-orgchart.esm.js'
   }
 ]
 
-async function build(outputOptions) {
+async function build(item) {
+  const vueSettings = item.min
+  ? { css: 'dist/style.min.css', postcss: [autoprefixer, cssnano] }
+  : { css: 'dist/style.css', postcss: [autoprefixer] }
+
+  const inputOptions = {
+    input: 'src/index.js',
+    plugins: [
+      vue(vueSettings),
+      resolve({
+        extensions: ['.js', '.vue']
+      }),
+      babel({
+        exclude: 'node_modules/**',
+        plugins: ['external-helpers']
+      })
+    ]
+  }
+  if (item.min) inputOptions.plugins.push(uglify())
+
   const bundle = await rollup.rollup(inputOptions)
-  await bundle.write(outputOptions)
+  await bundle.write(item)
 }
 
-outputOptions.forEach(outputOptions => {
-  build(outputOptions)
-    .then(() => console.log(`rollup: ${outputOptions.name}.${outputOptions.format} built successfully`))
+outputOptions.forEach(item => {
+  build(item)
+    .then(() => item.min
+      ? console.log(`rollup: ${item.name}.${item.format}.min built successfully`)
+      : console.log(`rollup: ${item.name}.${item.format} built successfully`))
     .catch(err => console.error(err))
 })
