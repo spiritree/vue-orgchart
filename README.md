@@ -82,7 +82,7 @@ npm run dev
 # unit test
 npm run test
 
-# build for production with minification
+# build by rollup
 npm run rollup
 ```
 
