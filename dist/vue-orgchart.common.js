@@ -4354,127 +4354,14 @@ var clickChart = function clickChart(event) {
 
 
 
-var addNodes = function addNodes(orgchart) {
-  var chartContainer = document.getElementById('chart-container');
-  var nodeVals = [];
 
-  Array.from(document.getElementById('new-nodelist').querySelectorAll('.new-node')).forEach(function (item) {
-    var validVal = item.value.trim();
 
-    if (validVal) {
-      nodeVals.push(validVal);
-    }
-  });
-  var selectedNode = document.getElementById(document.getElementById('selected-node').dataset.node);
 
-  if (!nodeVals.length) {
-    alert('Please input value for new node');
-    return;
-  }
-  var nodeType = document.querySelector('input[name="node-type"]:checked');
 
-  if (!nodeType) {
-    alert('Please select a node type');
-    return;
-  }
-  if (nodeType.value !== 'parent' && !document.querySelector('.orgchart')) {
-    alert('Please creat the root node firstly when you want to build up the orgchart from the scratch');
-    return;
-  }
-  if (nodeType.value !== 'parent' && !selectedNode) {
-    alert('Please select one node in orgchart');
-    return;
-  }
-  /* eslint-disable */
-  if (nodeType.value === 'parent') {
-    if (!chartContainer.children.length) {
-      // if the original chart has been deleted
-      orgchart = new OrgChart({
-        'chartContainer': '#chart-container',
-        'data': { 'name': nodeVals[0] },
-        'parentNodeSymbol': 'fa-th-large',
-        'createNode': function createNode(node, data) {
-          node.id = getId();
-        }
-      });
-      orgchart.chart.classList.add('view-state');
-    } else {
-      orgchart.addParent(chartContainer.querySelector('.node'), { 'name': nodeVals[0], 'Id': getId() });
-    }
-  } else if (nodeType.value === 'siblings') {
-    orgchart.addSiblings(selectedNode, {
-      'siblings': nodeVals.map(function (item) {
-        return { 'name': item, 'relationship': '110', 'Id': getId() };
-      })
-    });
-  } else {
-    var hasChild = selectedNode.parentNode.colSpan > 1;
 
-    if (!hasChild) {
-      var rel = nodeVals.length > 1 ? '110' : '100';
-
-      orgchart.addChildren(selectedNode, {
-        'children': nodeVals.map(function (item) {
-          return { 'name': item, 'relationship': rel, 'Id': getId() };
-        })
-      });
-    } else {
-      orgchart.addSiblings(closest(selectedNode, function (el) {
-        return el.nodeName === 'TABLE';
-      }).querySelector('.nodes').querySelector('.node'), { 'siblings': nodeVals.map(function (item) {
-          return { 'name': item, 'relationship': '110', 'Id': getId() };
-        })
-      });
-    }
-  }
-};
-
-var deleteNodes = function deleteNodes(orgchart) {
-  var sNodeInput = document.getElementById('selected-node');
-  var sNode = document.getElementById(sNodeInput.dataset.node);
-
-  if (!sNode) {
-    alert('Please select one node in orgchart');
-    return;
-  } else if (sNode === document.querySelector('.orgchart').querySelector('.node')) {
-    if (!window.confirm('Are you sure you want to delete the whole chart?')) {
-      return;
-    }
-  }
-  orgchart.removeNodes(sNode);
-  sNodeInput.value = '';
-  sNodeInput.dataset.node = '';
-};
-
-var resetPanel = function resetPanel() {
-  var fNode = document.querySelector('.orgchart').querySelector('.focused');
-
-  if (fNode) {
-    fNode.classList.remove('focused');
-  }
-  document.getElementById('selected-node').value = '';
-  document.getElementById('new-nodelist').querySelector('input').value = '';
-  Array.from(document.getElementById('new-nodelist').children).slice(1).forEach(function (item) {
-    return item.remove();
-  });
-  document.getElementById('node-type-panel').querySelectorAll('input').forEach(function (item) {
-    item.checked = false;
-  });
-};
 
 var getId = function getId() {
   return new Date().getTime() * 1000 + Math.floor(Math.random() * 1001);
-};
-
-var exportJSON = function exportJSON(orgchart) {
-  var datasourceJSON = {};
-  var ChartJSON = orgchart.getChartJSON();
-  datasourceJSON = JSON.stringify(ChartJSON, null, 2);
-  if (document.getElementsByTagName('code')[1]) {
-    var code = document.getElementsByTagName('code')[1];
-    code.innerHTML = datasourceJSON;
-  }
-  return datasourceJSON;
 };
 
 var VoEdit = { render: function render() {
@@ -4516,16 +4403,8 @@ var VoEdit = { render: function render() {
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
     this.initOrgChart();
-    this.$nextTick(bindEventHandler('.node', 'click', clickNode, '#chart-container'), bindEventHandler('.orgchart', 'click', clickChart, '#chart-container'), document.getElementById('btn-add-nodes').addEventListener('click', function () {
-      return addNodes(_this.orgchart);
-    }), document.getElementById('btn-delete-nodes').addEventListener('click', function () {
-      return deleteNodes(_this.orgchart);
-    }), document.getElementById('btn-reset').addEventListener('click', resetPanel), document.getElementById('btn-export').addEventListener('click', function () {
-      return exportJSON(_this.orgchart);
-    }));
+    this.$nextTick(bindEventHandler('.node', 'click', clickNode, '#chart-container'), bindEventHandler('.orgchart', 'click', clickChart, '#chart-container'));
   },
 
   methods: {
