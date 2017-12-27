@@ -5,7 +5,7 @@
 <script>
 import OrgChart from '../lib/orgchart'
 import { mergeOptions } from '../lib/lodash.js'
-import { bindEventHandler, clickNode, clickChart, getId, addNodes, deleteNodes, resetPanel, exportJSON } from '../lib/utils'
+import { bindEventHandler, clickNode, clickChart, getId } from '../lib/utils'
 
 export default {
   name: 'orgchart',
@@ -44,11 +44,7 @@ export default {
     this.initOrgChart()
     this.$nextTick(
       bindEventHandler('.node', 'click', clickNode, '#chart-container'),
-      bindEventHandler('.orgchart', 'click', clickChart, '#chart-container'),
-      document.getElementById('btn-add-nodes').addEventListener('click', () => addNodes(this.orgchart)),
-      document.getElementById('btn-delete-nodes').addEventListener('click', () => deleteNodes(this.orgchart)),
-      document.getElementById('btn-reset').addEventListener('click', resetPanel),
-      document.getElementById('btn-export').addEventListener('click', () => exportJSON(this.orgchart))
+      bindEventHandler('.orgchart', 'click', clickChart, '#chart-container')
     )
   },
   methods: {
