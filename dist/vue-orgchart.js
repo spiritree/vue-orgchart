@@ -136,11 +136,12 @@ var OrgChart$1 = function () {
       'chartClass': '',
       'exportButton': false,
       'exportFilename': 'OrgChart',
-      'parentNodeSymbol': 'fa-users',
+      'parentNodeSymbol': '',
       'draggable': false,
       'direction': 't2b',
       'pan': false,
-      'zoom': false
+      'zoom': false,
+      'toggleCollapse': true
     },
         opts = _extends(defaultOptions, options),
         data = opts.data,
@@ -1783,10 +1784,11 @@ var OrgChart$1 = function () {
             title.insertBefore(symbol, title.children[0]);
           }
         }
-
-        nodeDiv.addEventListener('mouseenter', that._hoverNode.bind(that));
-        nodeDiv.addEventListener('mouseleave', that._hoverNode.bind(that));
-        nodeDiv.addEventListener('click', that._dispatchClickEvent.bind(that));
+        if (opts.toggleCollapse) {
+          nodeDiv.addEventListener('mouseenter', that._hoverNode.bind(that));
+          nodeDiv.addEventListener('mouseleave', that._hoverNode.bind(that));
+          nodeDiv.addEventListener('click', that._dispatchClickEvent.bind(that));
+        }
         if (opts.draggable) {
           nodeDiv.addEventListener('dragstart', that._onDragStart.bind(that));
           nodeDiv.addEventListener('dragover', that._onDragOver.bind(that));
@@ -4280,7 +4282,7 @@ var VoBasic = { render: function render() {
     ajaxURL: { type: Object },
     depth: { type: Number, default: 999 },
     nodeTitle: { type: String, default: 'name' },
-    parentNodeSymbol: { type: String, default: 'fa-users' },
+    parentNodeSymbol: { type: String, default: '' },
     nodeContent: { type: String },
     nodeId: { type: String, default: 'id' },
     createNode: { type: Function },
@@ -4288,7 +4290,8 @@ var VoBasic = { render: function render() {
     exportFilename: { type: String },
     chartClass: { type: String, default: '' },
     draggable: { type: Boolean, default: false },
-    dropCriteria: { type: Function }
+    dropCriteria: { type: Function },
+    toggleCollapse: { type: Boolean, default: true }
   },
   data: function data() {
     return {
@@ -4383,7 +4386,7 @@ var VoEdit = { render: function render() {
     ajaxURL: { type: Object },
     depth: { type: Number, default: 999 },
     nodeTitle: { type: String, default: 'name' },
-    parentNodeSymbol: { type: String, default: 'fa-users' },
+    parentNodeSymbol: { type: String, default: '' },
     nodeContent: { type: String },
     nodeId: { type: String, default: 'id' },
     createNode: { type: Function },
@@ -4391,7 +4394,8 @@ var VoEdit = { render: function render() {
     exportFilename: { type: String },
     chartClass: { type: String, default: '' },
     draggable: { type: Boolean, default: false },
-    dropCriteria: { type: Function }
+    dropCriteria: { type: Function },
+    toggleCollapse: { type: Boolean, default: true }
   },
   data: function data() {
     return {
