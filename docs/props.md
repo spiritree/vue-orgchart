@@ -32,6 +32,9 @@
       <td>toggleSiblingsResp</td><td>boolean</td><td>no</td><td>false</td><td>Once enable this option, users can show/hide left/right sibling nodes respectively by clicking left/right arrow.</td>
     </tr>
     <tr>
+      <td>toggleCollapse</td><td>boolean</td><td>no</td><td>true</td><td>Show the arrow and you can click it to collapse the node</td>
+    </tr>
+    <tr>
       <td>ajaxURL</td><td>json</td><td>no</td><td></td><td>It inclueds four properites -- parent, children, siblings, families(ask for parent node and siblings nodes). As their names imply, different propety provides the URL to which ajax request for different nodes is sent.</td>
     </tr>
     <tr>
@@ -41,7 +44,7 @@
       <td>nodeTitle</td><td>string</td><td>no</td><td>"name"</td><td>It sets one property of datasource as text content of title section of orgchart node. In fact, users can create a simple orghcart with only nodeTitle option.</td>
     </tr>
     <tr>
-      <td>parentNodeSymbol</td><td>string</td><td>no</td><td>"fa-users"</td><td>Using font awesome icon to imply that the node has child nodes.</td>
+      <td>parentNodeSymbol</td><td>string</td><td>no</td><td>" "</td><td>Using font awesome icon to imply that the node has child nodes.</td>
     </tr>
     <tr>
       <td>nodeContent</td><td>string</td><td>no</td><td></td><td>It sets one property of datasource as text content of content section of orgchart node.</td>

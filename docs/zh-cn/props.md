@@ -34,6 +34,9 @@
       <td>toggleSiblingsResp</td><td>Boolean</td><td>no</td><td>false</td><td>一旦启用此选项，用户可以显示/隐藏左/右兄弟节点分别点击左/右箭头</td>
     </tr>
     <tr>
+      <td>toggleCollapse</td><td>Boolean</td><td>no</td><td>true</td><td>你可以设值为false来关闭节点的箭头图标</td>
+    </tr>
+    <tr>
       <td>ajaxURL</td><td>String</td><td>no</td><td></td><td>Ajax获取JSON数据</td>
     </tr>
     <tr>
@@ -43,7 +46,7 @@
       <td>nodeTitle</td><td>String</td><td>no</td><td>"name"</td><td>树形组织图中的元素名称</td>
     </tr>
     <tr>
-      <td>parentNodeSymbol</td><td>String</td><td>no</td><td>"fa-users"</td><td>父元素节点的图标class</td>
+      <td>parentNodeSymbol</td><td>String</td><td>no</td><td>""</td><td>父元素节点的图标class</td>
     </tr>
     <tr>
       <td>nodeContent</td><td>String</td><td>no</td><td></td><td>树形组织图中二级元素名称</td>
