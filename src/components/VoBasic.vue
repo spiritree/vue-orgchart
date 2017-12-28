@@ -17,7 +17,7 @@ export default {
     ajaxURL: { type: Object },
     depth: { type: Number, default: 999 },
     nodeTitle: { type: String, default: 'name' },
-    parentNodeSymbol: { type: String, default: 'fa-users' },
+    parentNodeSymbol: { type: String, default: '' },
     nodeContent: { type: String },
     nodeId: { type: String, default: 'id' },
     createNode: { type: Function },
@@ -25,7 +25,8 @@ export default {
     exportFilename: { type: String },
     chartClass: { type: String, default: '' },
     draggable: { type: Boolean, default: false },
-    dropCriteria: { type: Function }
+    dropCriteria: { type: Function },
+    toggleCollapse: { type: Boolean, default: true }
   },
   data () {
     return {

@@ -19,11 +19,12 @@ export default class OrgChart {
         'chartClass': '',
         'exportButton': false,
         'exportFilename': 'OrgChart',
-        'parentNodeSymbol': 'fa-users',
+        'parentNodeSymbol': '',
         'draggable': false,
         'direction': 't2b',
         'pan': false,
-        'zoom': false
+        'zoom': false,
+        'toggleCollapse': true
       },
       opts = Object.assign(defaultOptions, options),
       data = opts.data,
@@ -1408,10 +1409,11 @@ export default class OrgChart {
           title.insertBefore(symbol, title.children[0]);
         }
       }
-
-      nodeDiv.addEventListener('mouseenter', that._hoverNode.bind(that));
-      nodeDiv.addEventListener('mouseleave', that._hoverNode.bind(that));
-      nodeDiv.addEventListener('click', that._dispatchClickEvent.bind(that));
+      if (opts.toggleCollapse) {
+        nodeDiv.addEventListener('mouseenter', that._hoverNode.bind(that));
+        nodeDiv.addEventListener('mouseleave', that._hoverNode.bind(that));
+        nodeDiv.addEventListener('click', that._dispatchClickEvent.bind(that));
+      }
       if (opts.draggable) {
         nodeDiv.addEventListener('dragstart', that._onDragStart.bind(that));
         nodeDiv.addEventListener('dragover', that._onDragOver.bind(that));
