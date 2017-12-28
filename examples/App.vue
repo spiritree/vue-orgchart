@@ -3,6 +3,7 @@
   <vo-edit style="background: #fff"
     :data="chartData"
     :exportButton=true
+    :toggleCollapse=true
     exportFilename="test"
   >
   </vo-edit>
