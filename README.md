@@ -1,6 +1,8 @@
-<div align="center" style="text-align:center">
-  <img src="/assets/vue-orgchart.jpg" alt="vue-orgchart logo">
-</div>
+<p align="center">
+  <a href="https://spiritree.github.io/vue-orgchart">
+    <img src="/assets/vue-orgchart.jpg" alt="vue-orgchart logo">
+  </a>
+</p>
 
 <p align="center">
 A Vue wrapper for OrgChart.js.
