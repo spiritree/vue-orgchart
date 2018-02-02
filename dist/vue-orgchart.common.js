@@ -1835,7 +1835,7 @@ var OrgChart$1 = function () {
         });
       }
       // Construct the inferior nodes and connectiong lines
-      if (childNodes) {
+      if (childNodes && childNodes.length !== 0) {
         if (Object.keys(nodeData).length === 1) {
           // if nodeData is just an array
           nodeWrapper = appendTo;

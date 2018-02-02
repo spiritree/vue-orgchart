@@ -1,7 +1,7 @@
 {
   "name": "vue-orgchart",
   "description": "A vue wrapper for OrgChart.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": {
     "name": "spiritree",
     "email": "spiritreess@gmail.com",
@@ -34,6 +34,7 @@
     "orgchart"
   ],
   "dependencies": {
+    "vue": "^2.5.8",
     "orgchart.js": "0.0.4"
   },
   "browserslist": [
@@ -88,10 +89,6 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-plugin-vue": "^2.5.2",
-    "vue": "^2.5.8",
-    "vue-loader": "^13.0.5",
-    "vue-style-loader": "^3.0.3",
-    "vue-template-compiler": "^2.5.8",
     "webpack": "^3.8.0",
     "webpack-dev-server": "^2.9.1"
   }
