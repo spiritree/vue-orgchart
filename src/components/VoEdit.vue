@@ -8,9 +8,9 @@ import { mergeOptions } from '../lib/lodash.js'
 import { bindEventHandler, clickNode, clickChart, getId } from '../lib/utils'
 
 export default {
-  name: 'orgchart',
+  name: 'VoEdit',
   props: {
-    data: { type: Object, default () { return {} } },
+    data: { type: Object },
     pan: { type: Boolean, default: false },
     zoom: { type: Boolean, default: false },
     direction: { type: String, default: 't2b' },
@@ -32,26 +32,41 @@ export default {
   },
   data () {
     return {
+      newData: null,
       orgchart: null,
       defaultOptions: {
         chartContainer: '#chart-container',
         createNode: function(node, data) {
           node.id = getId()
         }
-      }
+      },
     }
   },
   mounted() {
-    this.initOrgChart()
-    this.$nextTick(
-      bindEventHandler('.node', 'click', clickNode, '#chart-container'),
+    this.newData === null ? this.initOrgChart() : null
+    this.$nextTick(() => {
+      bindEventHandler('.node', 'click', clickNode, '#chart-container')
       bindEventHandler('.orgchart', 'click', clickChart, '#chart-container')
-    )
+    })
   },
   methods: {
     initOrgChart() {
       const opts = mergeOptions(this.defaultOptions, this.$props)
       this.orgchart = new OrgChart(opts)
+    }
+  },
+  watch: {
+    data(newVal) {
+      this.newData = newVal
+      const promise = new Promise((resolve) => {
+        if (newVal) {
+          resolve();
+        }
+      })
+      promise.then(() => {
+        const opts = mergeOptions(this.defaultOptions, this.$props)
+        this.orgchart = new OrgChart(opts)
+      })
     }
   }
 }

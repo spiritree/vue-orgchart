@@ -30,6 +30,7 @@ export default {
   },
   data () {
     return {
+      newData: null,
       orgchart: null,
       defaultOptions: {
         'chartContainer': '#chart-container'
@@ -37,12 +38,25 @@ export default {
     }
   },
   mounted() {
-    this.initOrgChart()
+    this.newData === null ? this.initOrgChart() : null
   },
   methods: {
     initOrgChart() {
       const opts = mergeOptions(this.defaultOptions, this.$props)
       this.orgchart = new OrgChart(opts)
+    }
+  },
+  watch: {
+    data(newVal) {
+      const promise = new Promise((resolve) => {
+        if (newVal) {
+          resolve()
+        }
+      })
+      promise.then(() => {
+        const opts = mergeOptions(this.defaultOptions, this.$props)
+        this.orgchart = new OrgChart(opts)
+      })
     }
   }
 }
