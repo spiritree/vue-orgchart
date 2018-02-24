@@ -4314,6 +4314,7 @@ var VoBasic = { render: function render() {
     data: function data(newVal) {
       var _this = this;
 
+      this.newData = newVal;
       var promise = new Promise(function (resolve) {
         if (newVal) {
           resolve();
