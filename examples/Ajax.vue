@@ -1,7 +1,7 @@
 <template>
 <div>
   <vo-edit style="background: #fff"
-    :data="chartData"
+    :data="areaList"
     :exportButton=true
     :toggleCollapse=true
     exportFilename="test"
@@ -32,10 +32,10 @@
     </div>
   </div>
   <pre class="json-container">
-          <code class="json">
-            JSON
-          </code>
-      </pre>
+    <code class="json">
+      JSON
+    </code>
+  </pre>
 </div>
 </template>
 
@@ -43,49 +43,65 @@
 import { VoEdit } from '../dist/vue-orgchart.min.js'
 export default {
   components: { VoEdit },
-  created () {
-    this.chartData = {
-      name: 'JavaScript',
-        children: [
-          { name: 'Angular' },
-          {
-            name: 'React',
-            children: [{ name: 'Preact' }]
-          },
-          {
-            name: 'Vue',
-            children: [{ name: 'Moon' }]
-          }
-        ]
+  async created () {
+    await this.$store.dispatch('getAreas');
+  },
+  computed: {
+    areaList () {
+      return this.$store.state.treeData
     }
   },
   mounted() {
-    this.$nextTick(
-      this.mountOrgchart()
-    )
+    this.mountOrgchart()
+    this.$nextTick(() => {
+      this.bindEventHandler('.node', 'click', this.clickNode, '#chart-container')
+    })
   },
   methods: {
+    closest (el, fn) {
+      console.log(el)
+      return el && ((fn(el) && el !== document.querySelector('.orgchart')) ? el : this.closest(el.parentNode, fn))
+    },
+    bindEventHandler (selector, type, fn, parentSelector) {
+      if (parentSelector) {
+        document.querySelector(parentSelector).addEventListener(type, function (event) {
+          fn(event)
+        })
+      } else {
+        document.querySelectorAll(selector).forEach(element => {
+          element.addEventListener(type, fn)
+        })
+      }
+    },
+    clickNode(event) {
+      alert('a');
+    },
     mountOrgchart() {
       this.$children.forEach((item) => {
+        this.orgChartObj = item
         item.orgchart !== undefined ? this.orgchart = item.orgchart : null
       })
     },
     addNodes() {
       let chartContainer = document.getElementById('chart-container')
       let nodeVals = []
+
       Array.from(document.getElementById('new-nodelist').querySelectorAll('.new-node'))
         .forEach(item => {
           let validVal = item.value.trim()
+
           if (validVal) {
             nodeVals.push(validVal)
           }
         })
       let selectedNode = document.getElementById(document.getElementById('selected-node').dataset.node)
+
       if (!nodeVals.length) {
         alert('Please input value for new node')
         return
       }
       let nodeType = document.querySelector('input[name="node-type"]:checked')
+
       if (!nodeType) {
         alert('Please select a node type')
         return
@@ -121,8 +137,10 @@ export default {
         })
       } else {
         let hasChild = selectedNode.parentNode.colSpan > 1
+
         if (!hasChild) {
           let rel = nodeVals.length > 1 ? '110' : '100'
+
           this.orgchart.addChildren(selectedNode, {
             'children': nodeVals.map(item => {
               return { 'name': item, 'relationship': rel, 'Id': this.getId() }
@@ -138,6 +156,7 @@ export default {
     deleteNodes() {
       let sNodeInput = document.getElementById('selected-node')
       let sNode = document.getElementById(sNodeInput.dataset.node)
+
       if (!sNode) {
         alert('Please select one node in orgchart')
         return
@@ -165,6 +184,7 @@ export default {
     }
   }
 }
+
 </script>
 <style>
 html {
@@ -216,3 +236,4 @@ html {
   background: #fff;
 }
 </style>
+
