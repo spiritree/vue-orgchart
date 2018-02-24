@@ -4289,6 +4289,7 @@ var VoBasic = { render: function render() {
   },
   data: function data() {
     return {
+      newData: null,
       orgchart: null,
       defaultOptions: {
         'chartContainer': '#chart-container'
@@ -4296,13 +4297,28 @@ var VoBasic = { render: function render() {
     };
   },
   mounted: function mounted() {
-    this.initOrgChart();
+    this.newData === null ? this.initOrgChart() : null;
   },
 
   methods: {
     initOrgChart: function initOrgChart() {
       var opts = mergeOptions(this.defaultOptions, this.$props);
       this.orgchart = new OrgChart$1(opts);
+    }
+  },
+  watch: {
+    data: function data(newVal) {
+      var _this = this;
+
+      var promise = new Promise(function (resolve) {
+        if (newVal) {
+          resolve();
+        }
+      });
+      promise.then(function () {
+        var opts = mergeOptions(_this.defaultOptions, _this.$props);
+        _this.orgchart = new OrgChart$1(opts);
+      });
     }
   }
 };
@@ -4366,12 +4382,9 @@ var getId = function getId() {
 var VoEdit = { render: function render() {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { staticClass: "vo-edit", attrs: { "id": "chart-container" } });
   }, staticRenderFns: [],
-  name: 'orgchart',
+  name: 'VoEdit',
   props: {
-    data: { type: Object, default: function _default() {
-        return {};
-      }
-    },
+    data: { type: Object },
     pan: { type: Boolean, default: false },
     zoom: { type: Boolean, default: false },
     direction: { type: String, default: 't2b' },
@@ -4393,6 +4406,7 @@ var VoEdit = { render: function render() {
   },
   data: function data() {
     return {
+      newData: null,
       orgchart: null,
       defaultOptions: {
         chartContainer: '#chart-container',
@@ -4403,14 +4417,33 @@ var VoEdit = { render: function render() {
     };
   },
   mounted: function mounted() {
-    this.initOrgChart();
-    this.$nextTick(bindEventHandler('.node', 'click', clickNode, '#chart-container'), bindEventHandler('.orgchart', 'click', clickChart, '#chart-container'));
+    this.newData === null ? this.initOrgChart() : null;
+    this.$nextTick(function () {
+      bindEventHandler('.node', 'click', clickNode, '#chart-container');
+      bindEventHandler('.orgchart', 'click', clickChart, '#chart-container');
+    });
   },
 
   methods: {
     initOrgChart: function initOrgChart() {
       var opts = mergeOptions(this.defaultOptions, this.$props);
       this.orgchart = new OrgChart$1(opts);
+    }
+  },
+  watch: {
+    data: function data(newVal) {
+      var _this = this;
+
+      this.newData = newVal;
+      var promise = new Promise(function (resolve) {
+        if (newVal) {
+          resolve();
+        }
+      });
+      promise.then(function () {
+        var opts = mergeOptions(_this.defaultOptions, _this.$props);
+        _this.orgchart = new OrgChart$1(opts);
+      });
     }
   }
 };

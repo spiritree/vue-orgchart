@@ -1,7 +1,7 @@
 {
   "name": "vue-orgchart",
   "description": "A vue wrapper for OrgChart.js",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": {
     "name": "spiritree",
     "email": "spiritreess@gmail.com",
@@ -34,8 +34,13 @@
     "orgchart"
   ],
   "dependencies": {
-    "vue": "^2.5.8",
-    "orgchart.js": "0.0.4"
+    "axios": "^0.17.1",
+    "orgchart.js": "0.0.4",
+    "vue": "^2.5.13",
+    "vue-loader": "^14.1.1",
+    "vue-style-loader": "^3.1.2",
+    "vue-template-compiler": "^2.5.13",
+    "vuex": "^3.0.1"
   },
   "browserslist": [
     "> 1%",
@@ -49,6 +54,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
