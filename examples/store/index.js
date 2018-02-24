@@ -10,8 +10,8 @@ const state = {
 
 const actions = {
   async getAreas ({ commit }) {
-    const res = await getData();
-    commit('getAreas', res);
+    const res = await getData()
+    commit('getAreas', res)
   },
 }
 
