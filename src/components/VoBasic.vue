@@ -48,6 +48,7 @@ export default {
   },
   watch: {
     data(newVal) {
+      this.newData = newVal
       const promise = new Promise((resolve) => {
         if (newVal) {
           resolve()
