@@ -208,7 +208,7 @@ table {
   position: relative;
   margin: 0;
   padding: 3px;
-  border: 2px dashed transparent;
+  border: 2px transparent;
   text-align: center;
   width: 130px;
 }
