@@ -101,7 +101,6 @@ export default {
   min-width: 100%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -117,27 +116,17 @@ export default {
 .orgchart div::before,
 .orgchart div::after {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 .orgchart.b2t {
-  -ms-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .orgchart.l2r {
-  position: absolute;
-  -ms-transform: rotate(-90deg) rotateY(180deg);
-  -moz-transform: rotate(-90deg) rotateY(180deg);
   -webkit-transform: rotate(-90deg) rotateY(180deg);
   transform: rotate(-90deg) rotateY(180deg);
-  -ms-transform-origin: left top;
-  -moz-transform-origin: left top;
-  -webkit-transform-origin: left top;
-  transform-origin: left top;
 }
 
 .orgchart .verticalNodes ul {
@@ -176,7 +165,6 @@ export default {
   border-style: solid;
   border-width: 0 0 2px 2px;
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -202,15 +190,8 @@ export default {
 }
 
 .orgchart.r2l {
-  position: absolute;
-  -ms-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-  -ms-transform-origin: left top;
-  -moz-transform-origin: left top;
-  -webkit-transform-origin: left top;
-  transform-origin: left top;
 }
 
 .orgchart>.spinner {
@@ -270,7 +251,7 @@ export default {
 }
 
 .orgchart.l2r .node, .orgchart.r2l .node {
-  width: 50px;
+  width: 40px;
   height: 130px;
 }
 
@@ -289,6 +270,7 @@ export default {
 
 .orgchart .node:hover {
   background-color: rgba(238, 217, 54, 0.5);
+  -webkit-transition: .5s;
   transition: .5s;
   cursor: default;
   z-index: 20;
@@ -328,35 +310,23 @@ export default {
 }
 
 .orgchart.b2t .node .title {
-  -ms-transform: rotate(-180deg);
-  -moz-transform: rotate(-180deg);
   -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg);
-  -ms-transform-origin: center bottom;
-  -moz-transform-origin: center bottom;
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
 }
 
 .orgchart.l2r .node .title {
-  -ms-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -moz-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
   -webkit-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
   transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -ms-transform-origin: bottom center;
-  -moz-transform-origin: bottom center;
   -webkit-transform-origin: bottom center;
   transform-origin: bottom center;
   width: 120px;
 }
 
 .orgchart.r2l .node .title {
-  -ms-transform: rotate(-90deg) translate(-40px, -40px);
-  -moz-transform: rotate(-90deg) translate(-40px, -40px);
   -webkit-transform: rotate(-90deg) translate(-40px, -40px);
   transform: rotate(-90deg) translate(-40px, -40px);
-  -ms-transform-origin: bottom center;
-  -moz-transform-origin: bottom center;
   -webkit-transform-origin: bottom center;
   transform-origin: bottom center;
   width: 120px;
@@ -384,35 +354,23 @@ export default {
 }
 
 .orgchart.b2t .node .content {
-  -ms-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
-  -ms-transform-origin: center top;
-  -moz-transform-origin: center top;
   -webkit-transform-origin: center top;
   transform-origin: center top;
 }
 
 .orgchart.l2r .node .content {
-  -ms-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -moz-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
   -webkit-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
   transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -ms-transform-origin: top center;
-  -moz-transform-origin: top center;
   -webkit-transform-origin: top center;
   transform-origin: top center;
   width: 120px;
 }
 
 .orgchart.r2l .node .content {
-  -ms-transform: rotate(-90deg) translate(-40px, -40px);
-  -moz-transform: rotate(-90deg) translate(-40px, -40px);
   -webkit-transform: rotate(-90deg) translate(-40px, -40px);
   transform: rotate(-90deg) translate(-40px, -40px);
-  -ms-transform-origin: top center;
-  -moz-transform-origin: top center;
   -webkit-transform-origin: top center;
   transform-origin: top center;
   width: 120px;
@@ -438,7 +396,6 @@ export default {
 
 .orgchart .node .verticalEdge {
   width: calc(100% - 10px);
-  width: -webkit-calc(100% - 10px);
   width: -moz-calc(100% - 10px);
   left: 5px;
 }
@@ -454,7 +411,6 @@ export default {
 .orgchart .node .horizontalEdge {
   width: 15px;
   height: calc(100% - 10px);
-  height: -webkit-calc(100% - 10px);
   height: -moz-calc(100% - 10px);
   top: 5px;
 }
@@ -470,7 +426,6 @@ export default {
 .orgchart .node .horizontalEdge::before {
   position: absolute;
   top: calc(50% - 7px);
-  top: -webkit-calc(50% - 7px);
   top: -moz-calc(50% - 7px);
 }
 
@@ -617,9 +572,11 @@ export default {
   border-radius: 4px;
   line-height: 1;
   border: 1px solid #d8dce5;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #5a5e66;
   display: inline-block;
+  -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
   transition: border-color .2s cubic-bezier(.645,.045,.355,1);
 }
 
@@ -667,7 +624,8 @@ export default {
 
 #edit-panel button:hover,.edit-panel button:focus,.edit-panel button:active {
   border-color: #409eff;
-  box-shadow:  0 0 10px #409eff;
+  -webkit-box-shadow:  0 0 10px #409eff;
+          box-shadow:  0 0 10px #409eff;
 }
 
 #new-nodelist {
@@ -695,7 +653,8 @@ export default {
   border: 1px solid #d8dce5;
   border-radius: 100%;
   cursor: pointer;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: inline-block;
   height: 14px;
   width: 14px;

@@ -125,11 +125,8 @@
 }
 
 .orgchart.l2r {
-  position: absolute;
   -webkit-transform: rotate(-90deg) rotateY(180deg);
   transform: rotate(-90deg) rotateY(180deg);
-  -webkit-transform-origin: left top;
-  transform-origin: left top;
 }
 
 .orgchart .verticalNodes ul {
@@ -193,11 +190,8 @@
 }
 
 .orgchart.r2l {
-  position: absolute;
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-  -webkit-transform-origin: left top;
-  transform-origin: left top;
 }
 
 .orgchart>.spinner {
@@ -257,7 +251,7 @@
 }
 
 .orgchart.l2r .node, .orgchart.r2l .node {
-  width: 50px;
+  width: 40px;
   height: 130px;
 }
 
