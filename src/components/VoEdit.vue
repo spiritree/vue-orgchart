@@ -60,7 +60,7 @@ export default {
       this.newData = newVal
       const promise = new Promise((resolve) => {
         if (newVal) {
-          resolve();
+          resolve()
         }
       })
       promise.then(() => {
