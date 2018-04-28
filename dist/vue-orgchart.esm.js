@@ -1522,11 +1522,15 @@ var OrgChart$1 = function () {
           event.dataTransfer.setDragImage(ghostNode, xOffset, yOffset);
         }
       }
-      var dragged = event.target,
-          dragZone = this._closest(dragged, function (el) {
+      var dragged = event.target;
+      var closestDraggedNodes = this._closest(dragged, function (el) {
         return el.classList && el.classList.contains('nodes');
-      }).parentNode.children[0].querySelector('.node'),
-          dragHier = Array.from(this._closest(dragged, function (el) {
+      });
+      var dragZone = null;
+      closestDraggedNodes !== null ? dragZone = this._closest(dragged, function (el) {
+        return el.classList && el.classList.contains('nodes');
+      }).parentNode.children[0].querySelector('.node') : null;
+      var dragHier = Array.from(this._closest(dragged, function (el) {
         return el.nodeName === 'TABLE';
       }).querySelectorAll('.node'));
 
