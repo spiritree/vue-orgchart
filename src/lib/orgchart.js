@@ -1187,11 +1187,17 @@ export default class OrgChart {
         event.dataTransfer.setDragImage(ghostNode, xOffset, yOffset);
       }
     }
-    let dragged = event.target,
-      dragZone = this._closest(dragged, (el) => {
+    let dragged = event.target;
+    let closestDraggedNodes = this._closest(dragged, (el) => {
+      return el.classList && el.classList.contains('nodes');
+    });
+    let dragZone = null;
+    closestDraggedNodes !== null
+      ? dragZone = this._closest(dragged, (el) => {
         return el.classList && el.classList.contains('nodes');
-      }).parentNode.children[0].querySelector('.node'),
-      dragHier = Array.from(this._closest(dragged, (el) => {
+      }).parentNode.children[0].querySelector('.node')
+      : null;
+    let dragHier = Array.from(this._closest(dragged, (el) => {
         return el.nodeName === 'TABLE';
       }).querySelectorAll('.node'));
 
