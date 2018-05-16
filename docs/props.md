@@ -59,6 +59,9 @@
       <td>exportButton</td><td>boolean</td><td>no</td><td>false</td><td>It enable the export button for orgchart.</td>
     </tr>
     <tr>
+      <td>exportButtonName</td><td>string</td><td>no</td><td></td><td>the name for export Button</td>
+    </tr>
+    <tr>
       <td>exportFilename</td><td>string</td><td>no</td><td>"Orgchart"</td><td>It's filename when you export current orgchart as a picture.</td>
     </tr>
     <tr>
