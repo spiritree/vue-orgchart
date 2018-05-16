@@ -4,6 +4,7 @@
     :data="chartData"
     :exportButton=true
     :toggleCollapse=true
+    exportButtonName="导出"
     exportFilename="test"
   >
   </vo-edit>
