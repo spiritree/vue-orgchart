@@ -61,6 +61,9 @@
       <td>exportButton</td><td>Boolean</td><td>no</td><td>false</td><td>导出图片</td>
     </tr>
     <tr>
+      <td>exportButtonName</td><td>string</td><td>no</td><td></td><td>导出图片按钮标题</td>
+    </tr>
+    <tr>
       <td>exportFilename</td><td>String</td><td>no</td><td>"Orgchart"</td><td>导出图片名称</td>
     </tr>
     <tr>
