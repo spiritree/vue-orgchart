@@ -133,6 +133,7 @@ var OrgChart$1 = function () {
       'depth': 999,
       'chartClass': '',
       'exportButton': false,
+      'exportButtonName': 'Export',
       'exportFilename': 'OrgChart',
       'parentNodeSymbol': '',
       'draggable': false,
@@ -181,7 +182,7 @@ var OrgChart$1 = function () {
           downloadBtn = document.createElement('a');
 
       exportBtn.setAttribute('class', 'oc-export-btn' + (opts.chartClass !== '' ? ' ' + opts.chartClass : ''));
-      exportBtn.innerHTML = 'Export';
+      opts.exportButtonName === 'Export' ? exportBtn.innerHTML = 'Export' : exportBtn.innerHTML = '' + opts.exportButtonName;
       exportBtn.addEventListener('click', this._clickExportButton.bind(this));
       downloadBtn.setAttribute('class', 'oc-download-btn' + (opts.chartClass !== '' ? ' ' + opts.chartClass : ''));
       downloadBtn.setAttribute('download', opts.exportFilename + '.png');
@@ -4289,6 +4290,7 @@ var VoBasic = { render: function render() {
     nodeId: { type: String, default: 'id' },
     createNode: { type: Function },
     exportButton: { type: Boolean, default: false },
+    exportButtonName: { type: String, default: 'Export' },
     exportFilename: { type: String },
     chartClass: { type: String, default: '' },
     draggable: { type: Boolean, default: false },
@@ -4407,6 +4409,7 @@ var VoEdit = { render: function render() {
     nodeId: { type: String, default: 'id' },
     createNode: { type: Function },
     exportButton: { type: Boolean, default: false },
+    exportButtonName: { type: String, default: 'Export' },
     exportFilename: { type: String },
     chartClass: { type: String, default: '' },
     draggable: { type: Boolean, default: false },

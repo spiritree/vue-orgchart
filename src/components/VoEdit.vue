@@ -24,6 +24,7 @@ export default {
     nodeId: { type: String, default: 'id' },
     createNode: { type: Function },
     exportButton: { type: Boolean, default: false },
+    exportButtonName: { type: String, default: 'Export' },
     exportFilename: { type: String },
     chartClass: { type: String, default: '' },
     draggable: { type: Boolean, default: false },

@@ -18,6 +18,7 @@ export default class OrgChart {
         'depth': 999,
         'chartClass': '',
         'exportButton': false,
+        'exportButtonName': 'Export',
         'exportFilename': 'OrgChart',
         'parentNodeSymbol': '',
         'draggable': false,
@@ -67,7 +68,7 @@ export default class OrgChart {
         downloadBtn = document.createElement('a');
 
       exportBtn.setAttribute('class', 'oc-export-btn' + (opts.chartClass !== '' ? ' ' + opts.chartClass : ''));
-      exportBtn.innerHTML = 'Export';
+      opts.exportButtonName === 'Export' ? exportBtn.innerHTML = `Export` : exportBtn.innerHTML = `${opts.exportButtonName}`;
       exportBtn.addEventListener('click', this._clickExportButton.bind(this));
       downloadBtn.setAttribute('class', 'oc-download-btn' + (opts.chartClass !== '' ? ' ' + opts.chartClass : ''));
       downloadBtn.setAttribute('download', opts.exportFilename + '.png');
